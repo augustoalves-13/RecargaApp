@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "RecargaAppAnimated",
+    "slug": "RecargaAppAnimated",
+    "icon": "./assets/LogoApp.png",
+    "splash": {
+      "image": "./assets/LogoApp.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7e5d3f3a-d10b-4768-a342-c0cb953ef72a"
+      }
+    },
+    "android": {
+      "package": "RecargaAppTeste.com",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/LogoApp.png",
+        "backgroundColor": "#ffffff"
+      }
+    }
+  }
+}
