@@ -39,7 +39,7 @@ export default function NotificationScreen() {
             <View style={StylesComponent.boxContent}>
                 <View style={StylesComponent.subContainer}>
                     <SimpleText
-                        title='Dúvidas frequentes'
+                        title='Notificações'
                     />
                     <View style={{ width: '80%', alignItems: "center", height: '70%', borderTopColor: '#606060', borderTopWidth: 2 }}>
                         {arr.map((item) => (

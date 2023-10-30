@@ -53,8 +53,8 @@ export default function SuccessFullScreen({ route }) {
 
                         {type === 'bilhete' && 
                             <CardBu
-                                Number={nome}
-                                name={number}
+                                Number={number}
+                                name={nome}
                             />
                         }
                         {type === 'PayCardTrash'&& 

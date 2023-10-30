@@ -24,7 +24,6 @@ function NameCardScreen({ route , navigation}) {
                             subTxt='Como deseja chama-lo?'
                         />
                         <InputAdd
-                            padding={20}
                             placeholder='Digite seu nome'
                             value={nome}
                             onChangeText={setNome}

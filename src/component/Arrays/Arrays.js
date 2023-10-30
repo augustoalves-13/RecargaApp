@@ -15,4 +15,3 @@ export const Month  = [
     {id: 1, mes: '12'}
 ]
 
-export const [value , setValue] = useState('')

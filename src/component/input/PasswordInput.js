@@ -68,5 +68,35 @@ const styles = StyleSheet.create({
         justifyContent: "space-evenly",
         alignItems: "center",
 
+    },
+
+    containerInput: {
+        width: '80%',
+        backgroundColor: '#f8f8f8',
+        height: 40,
+        borderRadius: 40,
+        paddingLeft:30,
+        elevation: 7,
     }
 })
+
+
+export function EmailInput({label , onChangeText, value, keyboardType,placeholder}) {
+
+
+    return (
+        <View style={{width: '100%' , alignItems: "center" , gap: 5}}>
+            <Text style={[{color: 'rgba(0,0,0,1)' , fontWeight: '600' , fontSize: 16 , width: '75%'}]}>{label}</Text>
+            <TextInput
+                placeholder={placeholder}
+                style={[styles.containerInput , inputShadow]}
+                value={value}
+                onChangeText={onChangeText}
+                keyboardType={keyboardType}
+                autoCapitalize='characters' 
+            />
+
+        </View>
+    )
+}
+ 

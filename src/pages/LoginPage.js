@@ -3,7 +3,7 @@ import { View } from "react-native";
 import StylesComponent from "../styles/StylesComponent";
 import LogoLogin from "../component/Logo/LogoLogin";
 import InputAdd from "../component/input/InputAdd";
-import PasswordInput from "../component/input/PasswordInput";
+import PasswordInput, { EmailInput } from "../component/input/PasswordInput";
 import { TouchableWithoutFeedback } from "react-native";
 import { Keyboard } from "react-native";
 import WhtButton from "../component/Buttons/WhtButton";
@@ -51,9 +51,7 @@ export default function LoginScreen({navigation}) {
                     <View style={[StylesComponent.subContainer, { justifyContent: "space-evenly", height: '100%' }]}>
                         <LogoLogin />
                         <View style={{ gap: 30, alingItems: 'center', width: '100%' }}>
-                            <InputAdd
-                                padding={20}
-                                color={{ color: '#000' }}
+                            <EmailInput
                                 label='E-mail'
                             />
                             <PasswordInput

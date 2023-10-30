@@ -9,17 +9,13 @@ import ButtonNextBack from "../../component/Buttons/ButtonNextBack";
 import ScrollDate from "../../component/Scroll/ScrollDate";
 import { ScrollShadow } from "../../styles/Shadows";
 
-export default function DateCard({navigation}) {
+export default function DateCard({ navigation }) {
 
-    const [value ,setValue] = useState('')    
-
-    const pickerSelects = [
-        { label: 'Option 1', value: 'option1' },
-        { label: 'Option 2', value: 'option2' },
-        { label: 'Option 3', value: 'option3' },
-      ];
-      
-      
+    const [selectedMonth , setSelectedMonth] = useState("")
+ 
+    const changeMonth = (mes) => {
+        setSelectedMonth(mes)
+    }
 
     return (
         <View style={StylesComponent.container}>
@@ -29,16 +25,17 @@ export default function DateCard({navigation}) {
                         title='Adicionar Cartão'
                         subTxt='Adicione a data de expiração'
                     />
-                    <View style={[styles.dateContainer , ScrollShadow]}>
-                        <Text style={{color: '#606060' , fontWeight:'bold' , width: '80%'}}>{value + 'Mês'}</Text>
+                    <View style={[styles.dateContainer, ScrollShadow]}>
+                        <Text style={{ color: '#606060', fontWeight: 'bold', width: '80%' }}>{selectedMonth}</Text>
                     </View>
-                    <ScrollDate/>
+                    <ScrollDate onPress={changeMonth}/>
                     <PaymentCardBack
+                        name={selectedMonth}
                         color='#02A847'
                     />
                 </View>
                 <ButtonNextBack
-                    onPress={()=>navigation.navigate('CvvCard')}
+                    onPress={() => navigation.navigate('CvvCard')}
                 />
             </View>
         </View>
@@ -46,7 +43,7 @@ export default function DateCard({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    selectContent:{
+    selectContent: {
         width: 40,
         elevation: 20,
         position: 'absolute',
@@ -55,7 +52,7 @@ const styles = StyleSheet.create({
         height: '80%'
     },
 
-    listButton:{
+    listButton: {
         height: 30,
         width: '100%',
         backgroundColor: '#d9d9d9',
@@ -63,7 +60,7 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
 
-    dateContainer:{
+    dateContainer: {
         height: 45,
         width: 150,
         borderRadius: 20,

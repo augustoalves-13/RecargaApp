@@ -7,11 +7,16 @@ import SimpleText from "../../component/Textos/SimpleText";
 import ButtonNextBack from "../../component/Buttons/ButtonNextBack";
 import { TouchableWithoutFeedback } from "react-native";
 import { Keyboard } from "react-native";
+import MoneyInput from "../../component/input/ValueInput";
 
 export default function ValorRecarga({ route, navigation }) {
 
     const { name } = route.params
-    const [value, setValue] = useState(4.40)
+    const [rechargeValue , setRechargeValue ] = useState()
+
+    const changeValue = (onValue) => {
+        setRechargeValue(onValue)
+    }
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -20,19 +25,15 @@ export default function ValorRecarga({ route, navigation }) {
                     <View style={{ width: '100%', alignItems: 'center', gap: 30 }}>
                         <SimpleText
                             title='Recarregar'
-                            subTxt='Quanto quer recarregar'
+                            subTxt='Qual valor quer recarregar'
                         />
-                        <InputAdd
-                            padding={20}
-                            value={value}
-                            keyboardType='numeric'
-                        />
+                        <MoneyInput/>
                         <CardAdd
                             name={name}
                         />
                     </View>
                     <ButtonNextBack
-                        onPress={() => navigation.navigate('PagamentoScreen', { name, value })}
+                        onPress={() => navigation.navigate('PagamentoScreen', { name, rechargeValue })}
                     />
                 </View>
             </View>

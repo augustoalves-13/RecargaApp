@@ -5,21 +5,36 @@ import { View } from "react-native"
 import { Month } from "../Arrays/Arrays"
 import { Text } from "react-native"
 import { Pressable } from "react-native"
+import { useState } from "react"
 
 
 const ScrollDate = ({onPress}) => {
 
+    const [value , setValue] = useState()
+    const [scrollPosition , setScrollPosition] = useState(0)
 
+    const handleScroll = (event) =>{ 
+        const position = event.nativeEvent.contentOffset.y
+        setScrollPosition(position)
+    }
+ 
+    if(scrollPosition > 10){
+        onPress('02')
+    } else{
+        onPress()
+    }
 
     return (
         <ScrollView
+            onScroll={handleScroll}
             style={[styles.scrollContainer, ScrollShadow]}
             showsVerticalScrollIndicator={false}
         >
             <View style={styles.scrollContent}>
                 {Month.map((item, index) => (
-                    <Pressable onPress={onPress} style={styles.contentScroll}>
-                        <Text key={index} style={{ color: '#606060', fontWeight: 'bold' }}>{item.mes}</Text>
+                    <Pressable key={index} onPress={()=>onPress(item.mes)} style={styles.contentScroll}>
+                        <Text style={{ color: '#606060', fontWeight: 'bold' }}>{item.mes}</Text>
+                        <Text style={{ color: '#606060', fontWeight: 'bold' }}>{scrollPosition}</Text>
                     </Pressable>
                 ))}
             </View>
@@ -40,13 +55,15 @@ const styles = StyleSheet.create({
     },
 
     scrollContent:{
-        alignItems: "center"
+        alignItems: "center",
     },  
 
     contentScroll: {
         height: 45,
         width: '90%',
-        justifyContent: "center"
+        justifyContent: "center",
+        flexDirection: "row",
+        justifyContent: "space-evenly"
     }
 })
 export default ScrollDate

@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { TextInput, StyleSheet } from "react-native";
 import { inputShadow } from "../../styles/Shadows";
 
-export default function InputAdd({label , onChangeText, value, keyboardType, placeholder , padding , color}) {
+export default function InputAdd({label , onChangeText, value, keyboardType, padding,    placeholder , color}) {
 
 
     return (
@@ -12,7 +12,7 @@ export default function InputAdd({label , onChangeText, value, keyboardType, pla
             <Text style={[{color: 'rgba(0,0,0,0.4)' , fontWeight: '600' , fontSize: 16 , width: '75%'} , color]}>{label}</Text>
             <TextInput
                 placeholder={placeholder}
-                style={[styles.container , {paddingLeft:padding} , inputShadow]}
+                style={[styles.container , inputShadow]}
                 value={value}
                 onChangeText={onChangeText}
                 keyboardType={keyboardType}
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f8f8f8',
         height: 40,
         borderRadius: 40,
-        paddingLeft: 30,
+        textAlign: "center",
         elevation: 7,
     }
 })

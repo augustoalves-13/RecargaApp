@@ -8,30 +8,15 @@ import ButtonNextBack from "../../component/Buttons/ButtonNextBack";
 import LogoUget from "../../component/Logo/LogoFooter";
 import { TouchableWithoutFeedback } from "react-native";
 import { Keyboard } from "react-native";
+import MoneyInput from "../../component/input/ValueInput";
 
 export default function RecargaScreen({ route, navigation }) {
     const { selectedItem } = route.params;
 
-    const [Inputvalue, setInputValue] = useState('R$0,00')
+    const [rechargeValue , setRechargeValue] = useState('')
 
-    const reverseText = (value) => {
-
-        value = value.replace(/[^\d.]/g ,'').replace(/^0+/g, '') 
-        
-        if(value === ''){
-            value === 'R$0,00'
-        } else if (!value.includes('.')){
-            value = `R$ ${value},00`
-        } else if(value.indexOf('.') === value.lenght - 2){
-            value === `R$ ${value}0`
-        }
-
-        return value
-
-    }
-
-    const handleChangeText = (text) => {
-        setInputValue(reverseText(text))
+    const onRechargeValue = (newValue) => {
+        rechargeValue(newValue)
     }
 
     return (
@@ -40,24 +25,18 @@ export default function RecargaScreen({ route, navigation }) {
                 <View style={StylesComponent.boxContent}>
                     <SimpleText
                         title='Recarga Celular'
-                        subTxt='Quanto quer recarregar'
+                        subTxt='Qual valor quer recarregar'
                     />
 
                     <View style={{ width: '100%', alignItems: "center", gap: 60, marginBottom: '30%' }}>
-                        <InputAdd
-                            padding={20}
-                            label={Inputvalue}
-                            value={Inputvalue}
-                            onChangeText={handleChangeText}
-                            keyboardType='numeric'
-                        />
+                        <MoneyInput/>
                         <CellphoneCard
                             imageSource={selectedItem.img}
                             title={selectedItem.nome}
                             number={selectedItem.numero}
                         />
                     </View>
-                    <ButtonNextBack onPress={() => navigation.navigate('CellphonePagamentoScreen', { selectedItem, Inputvalue })} />
+                    <ButtonNextBack onPress={() => navigation.navigate('CellphonePagamentoScreen', { selectedItem, rechargeValue })} />
                 </View>
             </View>
         </TouchableWithoutFeedback>

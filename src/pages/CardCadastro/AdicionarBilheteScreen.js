@@ -2,6 +2,7 @@ import { View } from "react-native";
 import SimpleText from "../../component/Textos/SimpleText";
 import AdicionarBilheteComponent from "../../component/Card/AdicionarBilhete";
 import HomeButton from "../../component/Buttons/HomeButton";
+import StylesComponent from "../../styles/StylesComponent";
 
 
 export default function AdicionarBilheteScreen() {
