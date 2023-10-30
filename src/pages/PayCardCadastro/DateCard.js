@@ -8,13 +8,34 @@ import PaymentCardBack from "../../component/Card/PaymentBackFront";
 import ButtonNextBack from "../../component/Buttons/ButtonNextBack";
 import ScrollDate from "../../component/Scroll/ScrollDate";
 import { ScrollShadow } from "../../styles/Shadows";
+import { Month, Year } from "../../component/Arrays/Arrays";
+import { TouchableOpacity } from "react-native";
+import { Pressable } from "react-native";
 
 export default function DateCard({ navigation }) {
 
-    const [selectedMonth , setSelectedMonth] = useState("")
- 
+    const [selectedMonth, setSelectedMonth] = useState("")
+    const [visibleMonth, setVisibleMonth] = useState(false)
+    const [visibleYear, setVisibleYear] = useState(false)
+
     const changeMonth = (mes) => {
         setSelectedMonth(mes)
+    }
+
+    const handleMonth = () => {
+        if (visibleMonth === false) {
+            setVisibleMonth(true)
+        } else if (visibleMonth === true) {
+            setVisibleMonth(false)
+        }
+    }
+
+    const handleYear = () => {
+        if (visibleYear === false) {
+            setVisibleYear(true)
+        } else if (visibleYear === true) {
+            setVisibleYear(false)
+        }
     }
 
     return (
@@ -25,10 +46,20 @@ export default function DateCard({ navigation }) {
                         title='Adicionar Cartão'
                         subTxt='Adicione a data de expiração'
                     />
-                    <View style={[styles.dateContainer, ScrollShadow]}>
-                        <Text style={{ color: '#606060', fontWeight: 'bold', width: '80%' }}>{selectedMonth}</Text>
+                    <View style={{ width: '100%', justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                        <Pressable onPress={handleMonth} style={[styles.dateContainer, ScrollShadow]}>
+                            <Text style={{ color: '#606060', fontWeight: 'bold', width: '80%' }}>{selectedMonth}</Text>
+                        </Pressable>
+                        <Pressable style={[styles.dateContainer, ScrollShadow]}>
+                            <Text style={{ color: '#606060', fontWeight: 'bold', width: '80%' }}>{selectedMonth}</Text>
+                        </Pressable>
                     </View>
-                    <ScrollDate onPress={changeMonth}/>
+                    {visibleMonth === true &&
+                        <ScrollDate right={225} Array={Month} onPress={changeMonth} />
+                    }
+                    {visibleYear === true &&
+                        <ScrollDate right={37} Array={Year} onPress={changeMonth} />
+                    }
                     <PaymentCardBack
                         name={selectedMonth}
                         color='#02A847'
