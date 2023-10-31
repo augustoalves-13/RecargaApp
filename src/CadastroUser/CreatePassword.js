@@ -1,86 +1,85 @@
-import { View, Text, Button } from "react-native";
-import StylesComponent from "../styles/StylesComponent";
-import LogoLogin from "../component/Logo/LogoLogin";
-import { StyleSheet } from "react-native";
-import PasswordInput from "../component/input/PasswordInput";
 import React, { useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import PasswordInput from "../component/input/PasswordInput";
 import ButtonNextBack from "../component/Buttons/ButtonNextBack";
+import LogoLogin from "../component/Logo/LogoLogin";
+import StylesComponent from "../styles/StylesComponent";
 
-export default function CreatePassword() {
+export default function CreatePassword({ navigation }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [verificationResult, setVerificationResult] = useState("");
-  const [classe , setClasse] = useState('')
+  const [txtClass, setTxtClass] = useState([
+    "gray",
+    "gray",
+    "gray",
+    "gray",
+    "gray",
+  ]);
 
   const handlePasswordChange = (text) => {
     setPassword(text);
+    checkPassword(text);
   };
 
   const handleConfirmPasswordChange = (text) => {
     setConfirmPassword(text);
   };
 
-  const checkPassword = () => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[%-&-!]).{8,}$/;
+  const checkPassword = (passwordToCheck) => {
+    const newTxtClass = [
+      passwordToCheck.length >= 8 ? "green" : "red",
+      /[A-Z]/.test(passwordToCheck) ? "green" : "red",
+      /[a-z]/.test(passwordToCheck) ? "green" : "red",
+      /[0-9]/.test(passwordToCheck) ? "green" : "red",
+      /[%$#@!*&]/.test(passwordToCheck) ? "green" : "red",
+    ];
 
-    if (password === confirmPassword) {
-      if (password.match(passwordRegex)) {
-        setPasswordError("");
-        setClasse("correct")
-        setVerificationResult("Senha válida. Sucesso!");
-      } else {
-        setPasswordError(
-          "A senha deve ter no mínimo 8 caracteres e conter pelo menos uma letra maiúscula e uma letra minúscula."
-        );
-        setClasse("erro")
-        setVerificationResult("Erro na senha.");
-      }
-    } else {
-      setPasswordError("As senhas não coincidem.");
-      setVerificationResult("Erro na senha.");
-    }
+    setTxtClass(newTxtClass);
   };
 
-  const txt = [ 
-    {id: 1, title: 'A senha deve ter no mínimo 8 caracteres' , value: ''},
-    {id: 2, title: 'A senha deve ter pelo menos uma letra maiúscula', value: ''},
-    {id: 3, title: 'A senha deve ter pelo menos uma letra minúscula', value: ''},
-    {id: 4, title: 'A senha deve ter pelo menos um número', value: ''},
-    {id: 5, title: 'A senha deve ter pelo menos um símbolo', value: ''},
-  ]
+  const txt = [
+    { id: 1, title: "A senha deve ter no mínimo 8 caracteres" },
+    { id: 2, title: "A senha deve ter pelo menos uma letra maiúscula" },
+    { id: 3, title: "A senha deve ter pelo menos uma letra minúscula" },
+    { id: 4, title: "A senha deve ter pelo menos um número" },
+    { id: 5, title: "A senha deve ter pelo menos um símbolo" },
+  ];
 
   return (
     <View style={StylesComponent.container}>
       <View style={[StylesComponent.boxContent, { height: "100%" }]}>
-        <View style={StylesComponent.subContainer}>
-          <LogoLogin />
-          <View style={styles.contentInput}>
+        <View style={[StylesComponent.subContainer, { justifyContent: 'space-evenly', height: '63   %' }]}>
+            <LogoLogin />
+          <View style={{width: '100%' , alignItems: "center" , gap: 15}}>
             <PasswordInput
-              bool={false}
               label="Crie sua senha"
               value={password}
-              onChangeText={handlePasswordChange}
+              onChangeText={checkPassword}
             />
             <PasswordInput
-              bool={false}
               label="Confirme sua senha"
               value={confirmPassword}
               onChangeText={handleConfirmPasswordChange}
             />
-           
             <View>
-              {txt.map((item) => (
-                <View key={item.id}>
-                  <View></View>
-                  <Text style={styles[classe]}>{item.title}</Text>
+              {txt.map((item, index) => (
+                <View key={item.id} style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <View style={[styles.circle, { backgroundColor: txtClass[index], borderColor: txtClass[index], }]}></View>
+                  <Text style={{ ...styles.txt, color: txtClass[index] }}>{item.title}</Text>
                 </View>
-              ))}  
-            </View>  
+              ))}
+            </View>
           </View>
         </View>
         <ButtonNextBack
-          onPress={checkPassword}
+          onPress={() => {
+            if (password === confirmPassword && !txtClass.some((el) => el === "red")) {
+              // Navegação para a próxima tela aqui
+              navigation.navigate("ProximaTela"); // Substitua "ProximaTela" pelo nome da sua próxima tela
+            } else {
+              // Lógica para lidar com senhas inválidas
+            }
+          }}
         />
       </View>
     </View>
@@ -88,19 +87,15 @@ export default function CreatePassword() {
 }
 
 const styles = StyleSheet.create({
-  contentInput: {
-    width: "100%",
-    gap: 15,
-    alignItems: "center",
+  txt: {
+    fontSize: 14,
+    marginLeft: 10,
   },
-  errorText: {
-    color: "red",
+  circle: {
+    width: 10,
+    height: 10,
+    borderRadius: 10,
+    marginRight: 5,
+    borderWidth: 2,
   },
-'correct': {
-    color: "green",
-  },
-
-  'erro':{
-    color: '#ff0000'
-  }
 });

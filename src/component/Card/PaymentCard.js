@@ -12,10 +12,10 @@ export default function PaymentCard({ TxtColor, color, Image, bandeira, number, 
                 </View>
             </View>
             <View style={styles.downRow}>
-                <View style={styles.numberContainer}>
+                <View>
                     <Text style={styles.numberCardColor}>{number}</Text>
                 </View>
-                <Text style={{color:'#fff'}}>{name}</Text>
+                <Text style={{color:'#000'}}>{name}</Text>
             </View>
         </View>
     )
@@ -44,14 +44,7 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
 
-    numberContainer:{
-        height: 22,
-        paddingHorizontal: 10,
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        alignItems: "center",   
-        justifyContent: "center"
-    },
+
 
     numberCardColor:{
         color: '#000',

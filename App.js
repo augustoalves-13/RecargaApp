@@ -6,7 +6,7 @@ import NumberCardScreen from './src/pages/CardCadastro/NumberCardScreen';
 import HomeScreen from './src/pages/HomeScreen';
 import HomeMoreScreen from './src/pages/More/HomeMoreScreen';
 import RecargaCellphoneHome from './src/pages/CellphoneRecarga/RecargaCellphoneHome';
-import AddNumberScreen from './src/pages/CellphoneRecarga/AddNumberScreen'; 
+import AddNumberScreen from './src/pages/CellphoneRecarga/AddNumberScreen';
 import RecargaScreen from './src/pages/CellphoneRecarga/RecargaScreen';
 import HomeRecargaScreen from './src/pages/Recarregar/HomeRecargaScreen';
 import ValorRecarga from './src/pages/Recarregar/ValorRecarga';
@@ -38,12 +38,14 @@ import NotificationScreen from './src/pages/More/Notifcation/Notification';
 import LoginScreen from './src/pages/LoginPage';
 import CadastroUser from './src/CadastroUser/CadastroUser';
 import CreatePassword from './src/CadastroUser/CreatePassword';
+import { StatusBar } from 'react-native';
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
     <NavigationContainer>
+      <StatusBar backgroundColor='#252525' barStyle='light-content' />
       <Stack.Navigator initialRouteName='LoginScreen'>
         <Stack.Screen name='HomeScreen' component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name='AdicionarBilheteScreen' component={AdicionarBilheteScreen} options={{ headerShown: false }} />
@@ -58,31 +60,31 @@ export default function App() {
         <Stack.Screen name='HomeRecargaScreen' component={HomeRecargaScreen} options={{ headerShown: false }} />
         <Stack.Screen name='ValorRecargaScreen' component={ValorRecarga} options={{ headerShown: false }} />
         <Stack.Screen name='PagamentoScreen' component={PagamentoScreen} options={{ headerShown: false }} />
-        <Stack.Screen name='PixScreen' component={PixScreen} options={{headerShown:false}}/>
-        <Stack.Screen name='SaveCard' component={SaveCard} options={{headerShown:false}}/>
-        <Stack.Screen name='PerfilScreen' component={PerfilScreen} options={{headerShown: false}}/>
-        <Stack.Screen name='ChangePassScreen' component={ChangePassScreen} options={{headerShown: false}}/>
-        <Stack.Screen name='PedidosScreen' component={Pedidos} options={{headerShown: false}}/>
-        <Stack.Screen name='UseTermosScreen' component={UseTermosScreen} options={{headerShown: false}}/>
-        <Stack.Screen name='QuestionScreen' component={QuestionScreen} options={{headerShown: false}}/>
-        <Stack.Screen name='NotificationScreen' component={NotificationScreen} options={{headerShown: false}}/>
-        <Stack.Screen name='PaymentHomeScreen' component={HomePaymentScreen} options={{headerShown: false}}/>
-        <Stack.Screen name='ChooseCard' component={ChooseCard} options={{headerShown: false}}/>
-        <Stack.Screen name='NameCardPayment' component={NameCardPayScreen} options={{headerShown: false}}/>
-        <Stack.Screen name='NumberCardPayment' component={NumberCardPay} options={{headerShown: false}}/>
-        <Stack.Screen name='DateCardScreen' component={DateCard} options={{headerShown: false}}/>
-        <Stack.Screen name='EditCardPayment' component={EditPaymentCard} options={{headerShown: false}}/>
-        <Stack.Screen name='CvvCard' component={CvvCard} options={{headerShown: false}}/>
-        <Stack.Screen name='CellphonePagamentoScreen' component={CellphonePagamentoScreen} options={{headerShown: false}}/>
-        <Stack.Screen name='SaveCardCellphone' component={SaveCardCellphone} options={{headerShown: false}}/>
-        <Stack.Screen name='SuccessFullScreen' component={SuccessFullScreen} options={{headerShown: false}}/>
-        <Stack.Screen name='SuccessFullScreenCellphone' component={SuccessFullScreenCellphone} options={{headerShown: false}}/>
-        <Stack.Screen name='CellphoneNumberScreen' component={CellphoneNumber} options={{headerShown: false}}/>
-        <Stack.Screen name='CellphoneNameScreen' component={CellphoneName} options={{headerShown: false}}/>
-        <Stack.Screen name='SMSCellphoneScreen' component={SMSCellphone} options={{headerShown: false}}/>
-        <Stack.Screen name='LoginScreen' component={LoginScreen} options={{headerShown: false}}/>
-        <Stack.Screen name='CadastroScreen' component={CadastroUser } options={{headerShown: false}}/>
-        <Stack.Screen name='CreatePasswordScreen' component={CreatePassword} options={{headerShown: false}}/>
+        <Stack.Screen name='PixScreen' component={PixScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='SaveCard' component={SaveCard} options={{ headerShown: false }} />
+        <Stack.Screen name='PerfilScreen' component={PerfilScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='ChangePassScreen' component={ChangePassScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='PedidosScreen' component={Pedidos} options={{ headerShown: false }} />
+        <Stack.Screen name='UseTermosScreen' component={UseTermosScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='QuestionScreen' component={QuestionScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='NotificationScreen' component={NotificationScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='PaymentHomeScreen' component={HomePaymentScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='ChooseCard' component={ChooseCard} options={{ headerShown: false }} />
+        <Stack.Screen name='NameCardPayment' component={NameCardPayScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='NumberCardPayment' component={NumberCardPay} options={{ headerShown: false }} />
+        <Stack.Screen name='DateCardScreen' component={DateCard} options={{ headerShown: false }} />
+        <Stack.Screen name='EditCardPayment' component={EditPaymentCard} options={{ headerShown: false }} />
+        <Stack.Screen name='CvvCard' component={CvvCard} options={{ headerShown: false }} />
+        <Stack.Screen name='CellphonePagamentoScreen' component={CellphonePagamentoScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='SaveCardCellphone' component={SaveCardCellphone} options={{ headerShown: false }} />
+        <Stack.Screen name='SuccessFullScreen' component={SuccessFullScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='SuccessFullScreenCellphone' component={SuccessFullScreenCellphone} options={{ headerShown: false }} />
+        <Stack.Screen name='CellphoneNumberScreen' component={CellphoneNumber} options={{ headerShown: false }} />
+        <Stack.Screen name='CellphoneNameScreen' component={CellphoneName} options={{ headerShown: false }} />
+        <Stack.Screen name='SMSCellphoneScreen' component={SMSCellphone} options={{ headerShown: false }} />
+        <Stack.Screen name='LoginScreen' component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='CadastroScreen' component={CadastroUser} options={{ headerShown: false }} />
+        <Stack.Screen name='CreatePasswordScreen' component={CreatePassword} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

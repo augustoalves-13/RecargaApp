@@ -35,7 +35,7 @@ export default function NumberCardPay ({navigation , route}){
                         keyboardType='numeric'
                     />
                     <PaymentCard
-                        color='#02A847'
+                        color='#DCDDE2'
                         name={name}
                         number={number}
                     />

@@ -32,7 +32,7 @@ export default function CvvCard({navigation}) {
                         />
                         <PaymentCardBack
                             number={name}
-                            color='#02A847'
+                            color='#DCDDE2'
                         />
                     </View>
                     <ButtonNextBack 

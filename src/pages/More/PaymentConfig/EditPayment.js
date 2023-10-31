@@ -12,16 +12,43 @@ import ButtonComponent from "../../../component/Buttons/ButtonComponent";
 import { useState } from "react";
 import { TouchableWithoutFeedback } from "react-native";
 import { Keyboard } from "react-native";
+import { Pressable } from "react-native";
+import ScrollDate from "../../../component/Scroll/ScrollDate";
+import { ScrollShadow } from "../../../styles/Shadows";
 
 export default function EditPaymentCard({ route, navigation }) {
 
     const { selectedItem } = route.params
-    const [type , setType] = useState('PayCardTrash')
+    const [type, setType] = useState('PayCardTrash')
 
     const [modalVisible, setModalVisible] = useState(false)
 
-    function navigateTo(){
-        navigation.navigate('SuccessFullScreen' , {
+    const [visibleMonth, setVisibleMonth] = useState(false)
+    const [visibleYear, setVisibleYear] = useState(false)
+
+    const changeMonth = (mes) => {
+        setSelectedMonth(mes)
+    }
+
+    const handleMonth = () => {
+        if (visibleMonth === false) {
+            setVisibleMonth(true)
+        } else if (visibleMonth === true) {
+            setVisibleMonth(false)
+        }
+    }
+
+    const handleYear = () => {
+        if (visibleYear === false) {
+            setVisibleYear(true)
+        } else if (visibleYear === true) {
+            setVisibleYear(false)
+        }
+    }
+
+
+    function navigateTo() {
+        navigation.navigate('SuccessFullScreen', {
             nome: selectedItem.nome,
             number: selectedItem.number,
             image: selectedItem.img,
@@ -46,8 +73,21 @@ export default function EditPaymentCard({ route, navigation }) {
                             value={selectedItem.nome}
                             label='Nome do titular'
                         />
-                        <ButtonMonth />
-                        <CardPayment
+                        <View style={{ width: '100%', justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                            <Pressable onPress={handleMonth} style={[styles.dateContainer, ScrollShadow]}>
+                                <Text style={{ color: '#606060', fontWeight: 'bold', width: '80%' }}>{selectedMonth}</Text>
+                            </Pressable>
+                            <Pressable style={[styles.dateContainer, ScrollShadow]}>
+                                <Text style={{ color: '#606060', fontWeight: 'bold', width: '80%' }}>{selectedMonth}</Text>
+                            </Pressable>
+                        </View>
+                        {visibleMonth === true &&
+                            <ScrollDate right={225} Array={Month} onPress={changeMonth} />
+                        }
+                        {visibleYear === true &&
+                            <ScrollDate right={37} Array={Year} onPress={changeMonth} />
+                        }              
+                      <CardPayment
                             flag={selectedItem.flag}
                             Image={selectedItem.img}
                             name={selectedItem.nome}
@@ -60,8 +100,8 @@ export default function EditPaymentCard({ route, navigation }) {
                         </TouchableOpacity>
                     </View>
                     <ButtonComponent
-                        onBack={()=>navigation.goBack()}
-                        onPress={()=>navigation.goBack()}
+                        onBack={() => navigation.goBack()}
+                        onPress={() => navigation.goBack()}
                         title='Salvar'
                     />
                 </View>
@@ -73,7 +113,7 @@ export default function EditPaymentCard({ route, navigation }) {
                 >
                     <View style={styles.container}>
                         <View style={styles.boxContent}>
-                            <Text style={{ fontWeight: "bold", fontSize: 20 , width: '83%'}}>Você realmente quer excluir seu cartão? Isso impossibilita de realizar pagamentos com esse cartão </Text>
+                            <Text style={{ fontWeight: "bold", fontSize: 20, width: '83%' }}>Você realmente quer excluir seu cartão? Isso impossibilita de realizar pagamentos com esse cartão </Text>
                             <CardPayment
                                 flag={selectedItem.flag}
                                 Image={selectedItem.img}
@@ -127,5 +167,13 @@ const styles = StyleSheet.create({
         paddingVertical: 20
     },
 
-    
+    dateContainer: {
+        height: 45,
+        width: 150,
+        borderRadius: 20,
+        backgroundColor: '#f8f8f8',
+        zIndex: 3,
+        justifyContent: "center",
+        alignItems: "center"
+    }
 })

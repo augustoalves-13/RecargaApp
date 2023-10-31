@@ -10,10 +10,7 @@ export default function PaymentCardBack({color,number, name }) {
                 </View>
             </View>
             <View style={styles.downRow}>
-                <View style={styles.numberContainer}>
                     <Text style={styles.numberCardColor}>{number}</Text>
-                </View>
-                <Text style={{color:'#fff'}}>{name}</Text>
             </View>
         </View>
     )
@@ -40,15 +37,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: "center",
         justifyContent: "space-between"
-    },
-
-    numberContainer:{
-        height: 22,
-        paddingHorizontal: 10,
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        alignItems: "center",   
-        justifyContent: "center"
     },
 
     numberCardColor:{

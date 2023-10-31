@@ -29,7 +29,7 @@ export default function NameCardPayScreen({navigation}) {
                         />
                         <PaymentCard
                             name={name}
-                            color='#02A847'
+                            color='#DCDDE2'
                         />
                     </View>
                     <ButtonNextBack 
