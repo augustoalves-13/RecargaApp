@@ -1,24 +1,43 @@
 {
   "expo": {
-    "name": "RecargaAppAnimated",
-    "slug": "RecargaAppAnimated",
+    "name": "recarga-app",
+    "slug": "recarga-app",
     "icon": "./assets/LogoApp.png",
-    "splash": {
-      "image": "./assets/LogoApp.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+    "version": "0.1.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.RecargaAppTeste.ios",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.RecargaAppTeste.android",
+      "versionCode": 1
     },
     "extra": {
       "eas": {
-        "projectId": "7e5d3f3a-d10b-4768-a342-c0cb953ef72a"
+        "projectId": "dc807a40-32be-4675-abec-8530be727ce4"
       }
     },
-    "android": {
-      "package": "RecargaAppTeste.com",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/LogoApp.png",
-        "backgroundColor": "#ffffff"
-      }
+    "owner": "gutosep13"
+  },
+  "splash": {
+    "image": "./assets/LogoApp.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#ffffff"
+  },
+  "extra": {
+    "eas": {
+      "projectId": "7e5d3f3a-d10b-4768-a342-c0cb953ef72a"
+    }
+  },
+  "android": {
+    "package": "com.recarga-app-teste.android",
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/LogoApp.png",
+      "backgroundColor": "#ffffff"
     }
   }
 }

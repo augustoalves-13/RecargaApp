@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import StylesComponent from "../../styles/StylesComponent";
 import SimpleText from "../../component/Textos/SimpleText";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Text } from "react-native";
 import { StyleSheet } from "react-native";
 import PaymentCardBack from "../../component/Card/PaymentBackFront";
@@ -9,7 +9,6 @@ import ButtonNextBack from "../../component/Buttons/ButtonNextBack";
 import ScrollDate from "../../component/Scroll/ScrollDate";
 import { ScrollShadow } from "../../styles/Shadows";
 import { Month, Year, months, year } from "../../component/Arrays/Arrays";
-import { TouchableOpacity } from "react-native";
 import { Pressable } from "react-native";
 import { Path, Svg } from "react-native-svg";
 
@@ -62,22 +61,25 @@ export default function DateCard({ navigation }) {
                     />
                     <View style={{ width: '100%', justifyContent: 'space-evenly', flexDirection: 'row' }}>
                         <Pressable onPress={handleMonth} style={[styles.dateContainer, ScrollShadow]}>
-                            <View style={{flexDirection: 'row' , width:'20%'}}>
-                                <Text style={{ color: '#606060', fontWeight: 'bold', width: '80%' }}>{selectedMonth}</Text>
-                                <Text style={{ color: '#606060', fontWeight: 'bold', width: '80%' }}>Mês</Text>
+                            <View style={{ flexDirection: 'row', width: '20%', }}>
+                                <Text style={{ color: '#000', fontWeight: 'bold', width: '80%' }}>{selectedMonth}</Text>
+                                <Text style={{ color: '#000', fontWeight: 'bold', width: '100%' }}>Mês</Text>
                             </View>
                             <SvgImg />
                         </Pressable>
                         <Pressable onPress={handleYear} style={[styles.dateContainer, ScrollShadow]}>
-                            <Text style={{ color: '#606060', fontWeight: 'bold', width: '80%' }}>{selectedYear}</Text>
+                            <View style={{ flexDirection: 'row', width: '35%', }}>
+                                <Text style={{ color: '#000', fontWeight: 'bold', width: '80%' }}>{selectedYear}</Text>
+                                <Text style={{ color: '#000', fontWeight: 'bold', width: '100%' }}>Ano</Text>
+                            </View>
                             <SvgImg />
                         </Pressable>
                     </View>
                     {visibleMonth === true &&
-                        <ScrollDate props={months} right={225} Array={Month} onPress={changeMonth} />
+                        <ScrollDate top='32%' props={months} right={225} Array={Month} onPress={changeMonth} />
                     }
                     {visibleYear === true &&
-                        <ScrollDate props={year} right={37} Array={Year} onPress={handleYearConst} />
+                        <ScrollDate top='32%' props={year} right={37} Array={Year} onPress={handleYearConst} />
                     }
                     <PaymentCardBack
                         number={selectedMonth + '/' + selectedYear}
@@ -116,8 +118,9 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: '#f8f8f8',
         zIndex: 3,
+        paddingHorizontal:13,
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center"
     }
 })

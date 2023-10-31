@@ -1,43 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { StyleSheet, ScrollView, View, Text, Pressable } from 'react-native';
 import { ScrollShadow } from '../../styles/Shadows';
 import { Month } from '../Arrays/Arrays';
 
-const ScrollDate = ({ onPress, Array, right, props, year }) => {
+const ScrollDate = ({ onPress, Array, right, props, year , top}) => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollRef = useRef(null); // Referência para o ScrollView
 
   const handleScroll = (event) => {
     const position = event.nativeEvent.contentOffset.y;
-
-    let selectedMonth = '01';
-
-    for (const { position, month } of props) {
-      if (position <= scrollPosition) {
-        selectedMonth = month;
-      } else {
-        break;
-      }
-    }
-
     setScrollPosition(position);
-    onPress(selectedMonth);
   };
 
-  const CallBackFunction = (title) => {
+  const CallBackFunction = (title, index) => {
     onPress(title, year);
+
+    // Calcula a posição desejada com base no índice do item clicado
+    const position = index * 45; // 45 é a altura de cada item
+    scrollRef.current.scrollTo({ y: position, animated: true });
   };
 
   return (
     <ScrollView
+      ref={scrollRef}
       onScroll={handleScroll}
-      style={[styles.scrollContainer, ScrollShadow, { right: right }]}
+      style={[styles.scrollContainer, ScrollShadow, { right: right , top:top}]}
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.scrollContent}>
         {Array.map((item, index) => (
           <Pressable
             key={index}
-            onPress={() => CallBackFunction(item.title)}
+            onPress={() => CallBackFunction(item.title, index)}
             style={[styles.contentScroll]}
           >
             <Text style={{ color: '#606060', fontWeight: 'bold' }}>{item.title}</Text>
@@ -55,7 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: '#f8f8f8',
     position: 'absolute',
-    top: '32%',
+    
     zIndex: 2,
   },
 
