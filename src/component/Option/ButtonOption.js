@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-export default function ButtonOption({onPress , title}){
+export default function OptionList({onPress , title}){
     return(
         <TouchableOpacity style={styles.container} onPress={onPress}>
             <Text>{title}</Text>

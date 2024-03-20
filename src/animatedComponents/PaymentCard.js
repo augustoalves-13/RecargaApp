@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import { PropsCards } from "../component/CardProps/CardsProps";
-import Cards from "../pages/More/PaymentConfig/CardButton";
+import Cards from "../screens/More/PaymentConfig/CardButton";
 import { useState } from "react";
 import { LayoutAnimation } from "react-native";
 import { useNavigation } from "@react-navigation/native";

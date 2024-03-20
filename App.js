@@ -1,43 +1,41 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AdicionarBilheteScreen from './src/pages/CardCadastro/AdicionarBilheteScreen';
-import NameCardScreen from './src/pages/CardCadastro/NameCardScreen';
-import NumberCardScreen from './src/pages/CardCadastro/NumberCardScreen';
-import HomeScreen from './src/pages/HomeScreen';
-import HomeMoreScreen from './src/pages/More/HomeMoreScreen';
-import RecargaCellphoneHome from './src/pages/CellphoneRecarga/RecargaCellphoneHome';
-import AddNumberScreen from './src/pages/CellphoneRecarga/AddNumberScreen';
-import RecargaScreen from './src/pages/CellphoneRecarga/RecargaScreen';
-import HomeRecargaScreen from './src/pages/Recarregar/HomeRecargaScreen';
-import ValorRecarga from './src/pages/Recarregar/ValorRecarga';
-import PagamentoScreen from './src/pages/Recarregar/PagamentoScreen';
-import PixScreen from './src/pages/Pagamentos/PixScreen';
-import SaveCard from './src/pages/Pagamentos/SaveCard';
-import PerfilScreen from './src/pages/More/Perfil';
-import ChangePassScreen from './src/pages/More/ChangePass/ChangePassScreen';
-import ConsultaNFC from './src/pages/ConsultaPages/ConsultaNFC';
-import ResponseConsultaScreen from './src/pages/ConsultaPages/ResponseConsulta';
-import Pedidos from './src/pages/Pedidos/PedidosScreen';
-import UseTermosScreen from './src/pages/More/Termos/UseTermosScreen';
-import QuestionScreen from './src/pages/More/Questions/QuestionScreen';
-import HomePaymentScreen from './src/pages/More/PaymentConfig/HomePaymentConfig';
-import ChooseCard from './src/pages/PayCardCadastro/ChooseCard';
-import NameCardPayScreen from './src/pages/PayCardCadastro/NameCardCadastro';
-import NumberCardPay from './src/pages/PayCardCadastro/NumberCardPayment';
-import DateCard from './src/pages/PayCardCadastro/DateCard';
-import EditPaymentCard from './src/pages/More/PaymentConfig/EditPayment';
-import CvvCard from './src/pages/PayCardCadastro/CvvCard';
-import CellphonePagamentoScreen from './src/pages/CellphoneRecarga/CellphonePayment';
-import SuccessFullScreen from './src/pages/SuccessFull/SucessFullScreen';
-import SuccessFullScreenCellphone from './src/pages/SuccessFull/SuccessFullScreenCellphone';
-import SaveCardCellphone from './src/pages/Pagamentos/SaveCardCellphone';
-import CellphoneNumber from './src/pages/CellphoneRecarga/Cadastro/CellphoneNumber';
-import CellphoneName from './src/pages/CellphoneRecarga/Cadastro/CellphoneName';
-import SMSCellphone from './src/pages/CellphoneRecarga/Cadastro/SMSCellphone';
-import NotificationScreen from './src/pages/More/Notifcation/Notification';
-import LoginScreen from './src/pages/LoginPage';
-import CadastroUser from './src/CadastroUser/CadastroUser';
-import CreatePassword from './src/CadastroUser/CreatePassword';
+import ChooseCardScreen from './src/screens/CardRegister/ChooseCardScreen';
+import NameCardScreen from './src/screens/CardRegister/NameCardScreen';
+import NumberCardScreen from './src/screens/CardRegister/NumberCardScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import HomeMoreScreen from './src/screens/More/HomeMoreScreen';
+import RecargaCellphoneHome from './src/screens/CellphoneRecarga/RecargaCellphoneHome';
+import AddNumberScreen from './src/screens/CellphoneRecarga/AddNumberScreen';
+import RecargaScreen from './src/screens/CellphoneRecarga/RecargaScreen';
+import HomeRecargaScreen from './src/screens/Recarregar/HomeRecargaScreen';
+import ValorRecarga from './src/screens/Recarregar/ValorRecarga';
+import PagamentoScreen from './src/screens/Recarregar/PagamentoScreen';
+import PixScreen from './src/screens/Pagamentos/PixScreen';
+import SaveCard from './src/screens/Pagamentos/SaveCard';
+import PerfilScreen from './src/screens/More/Perfil';
+import ChangePassScreen from './src/screens/More/ChangePass/ChangePassScreen';
+import ConsultaNFC from './src/screens/ConsultaPages/ConsultaNFC';
+import ResponseConsultaScreen from './src/screens/ConsultaPages/ResponseConsulta';
+import Pedidos from './src/screens/Pedidos/PedidosScreen';
+import UseTermosScreen from './src/screens/More/Termos/UseTermosScreen';
+import QuestionScreen from './src/screens/More/Questions/QuestionScreen';
+import HomePaymentScreen from './src/screens/More/PaymentConfig/HomePaymentConfig';
+import ChooseCard from './src/screens/PayCardCadastro/ChooseCard';
+import NameCardPayScreen from './src/screens/PayCardCadastro/NameCardCadastro';
+import NumberCardPay from './src/screens/PayCardCadastro/NumberCardPayment';
+import DateCard from './src/screens/PayCardCadastro/DateCard';
+import EditPaymentCard from './src/screens/More/PaymentConfig/EditPayment';
+import CvvCard from './src/screens/PayCardCadastro/CvvCard';
+import CellphonePagamentoScreen from './src/screens/CellphoneRecarga/CellphonePayment';
+import SuccessFullScreen from './src/screens/SuccessFull/SucessFullScreen';
+import SuccessFullScreenCellphone from './src/screens/SuccessFull/SuccessFullScreenCellphone';
+import SaveCardCellphone from './src/screens/Pagamentos/SaveCardCellphone';
+import CellphoneNumber from './src/screens/CellphoneRecarga/Cadastro/CellphoneNumber';
+import CellphoneName from './src/screens/CellphoneRecarga/Cadastro/CellphoneName';
+import SMSCellphone from './src/screens/CellphoneRecarga/Cadastro/SMSCellphone';
+import NotificationScreen from './src/screens/More/Notifcation/Notification';
+import LoginScreen from './src/screens/LoginPage';
 import { StatusBar } from 'react-native';
 
 const Stack = createNativeStackNavigator()
@@ -48,7 +46,7 @@ export default function App() {
       <StatusBar backgroundColor='#252525' barStyle='light-content' />
       <Stack.Navigator initialRouteName='LoginScreen'>
         <Stack.Screen name='HomeScreen' component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name='AdicionarBilheteScreen' component={AdicionarBilheteScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='ChooseCardScreen' component={ChooseCardScreen} options={{ headerShown: false }} />
         <Stack.Screen name='NameCardScreen' component={NameCardScreen} options={{ headerShown: false }} />
         <Stack.Screen name='NumberCardScreen' component={NumberCardScreen} options={{ headerShown: false }} />
         <Stack.Screen name='ConsultaNfcScreen' component={ConsultaNFC} options={{ headerShown: false }} />
@@ -83,8 +81,6 @@ export default function App() {
         <Stack.Screen name='CellphoneNameScreen' component={CellphoneName} options={{ headerShown: false }} />
         <Stack.Screen name='SMSCellphoneScreen' component={SMSCellphone} options={{ headerShown: false }} />
         <Stack.Screen name='LoginScreen' component={LoginScreen} options={{ headerShown: false }} />
-        <Stack.Screen name='CadastroScreen' component={CadastroUser} options={{ headerShown: false }} />
-        <Stack.Screen name='CreatePasswordScreen' component={CreatePassword} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

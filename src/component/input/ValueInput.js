@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Text } from 'react-native';
 import { View, TextInput, StyleSheet } from 'react-native';
+import { inputShadow } from '../../styles/Shadows';
 
 const MoneyInput = ({ label , onChangeValue}) => {
     const [inputValue, setInputValue] = useState('0,00');
@@ -27,7 +28,7 @@ const MoneyInput = ({ label , onChangeValue}) => {
             <Text style={[{ color: 'rgba(0,0,0,0.4)', fontWeight: '600', fontSize: 16, width: '75%' }]}>{label}</Text>
             <TextInput
                 value={'R$ '+inputValue}
-                style={[styles.container, styles.centerTextVertically]}
+                style={[styles.container, styles.centerTextVertically, inputShadow]}
                 keyboardType="numeric"
                 onChangeText={handleTextChange}
             />

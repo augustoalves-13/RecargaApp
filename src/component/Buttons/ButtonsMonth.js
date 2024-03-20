@@ -1,7 +1,7 @@
 import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 import StylesComponent from "../../styles/StylesComponent";
 import { useState } from "react";
-import ButtonOption from "../Option/ButtonOption";
+import OptionList from "../Option/ButtonOption";
 
 export default function DateButton() {
 
@@ -61,7 +61,7 @@ export default function DateButton() {
                                 <View>
                                     <ScrollView style={styles.listContainer}>
                                         {Month.map((month) => (
-                                            <ButtonOption
+                                            <OptionList
                                                 onPress={() => setMonthDate(month.mês)}
                                                 title={month.mês}
                                             />
@@ -71,7 +71,7 @@ export default function DateButton() {
                                 <View>
                                     <ScrollView style={styles.listContainer}>
                                         {Year.map((month) => (
-                                            <ButtonOption
+                                            <OptionList
                                                 onPress={() => setMonthDate(month.mês)}
                                                 title={month.mês}
                                             />

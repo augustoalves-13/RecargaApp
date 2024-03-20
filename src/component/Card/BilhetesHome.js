@@ -5,7 +5,7 @@ import { Path, Svg } from "react-native-svg";
 import WhtButton from "../Buttons/WhtButton";
 import { cardShadow } from "../../styles/Shadows";
 
-export default function BilheteHome({ color, title, bottom, onPress, animationContainer, cardVisible, numberCard, animationName, animationButton }) {
+export default function AnimatedCard({ color, title, bottom, onPress, animationContainer, cardVisible, numberCard, animationName, animationButton }) {
     const [buttonClass, setButtonClass] = useState("Wallet");
     const navigation = useNavigation()
     const [name, setName] = useState(title)
